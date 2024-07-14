@@ -1,4 +1,4 @@
-# Skinvestment - Company Profile
+# Skinvestment - Company Profile Website
 
 ## Introduction
 
