@@ -1,29 +1,28 @@
-# Skinvestment - Company Profile Website
+# Skinvestment - Your Skincare Partner
 
-## Introduction
-
-This is the company profile page for Skinvestment, created to showcase the company's mission, team, and expertise in skincare. The page is built using HTML and CSS, ensuring a responsive design across different screen devices.
+Welcome to Skinvestment! This project is a comprehensive skincare recommendation website designed to help users find the best skincare products tailored to their unique skin types and concerns.
 
 ## Features
 
-- Responsive design that adapts to different screen sizes and orientations.
-- Semantic HTML5 tags used to structure the content.
-- CSS media queries to maintain a consistent layout across devices.
-- Personalized skincare recommendations.
-- Detailed team and expertise sections.
+- **Introduction Section**: Learn about the purpose and mission of Skinvestment.
+- **Skincare Analyzer**: Provides detailed information about various skincare ingredients, their suitability for different skin types, and notable benefits.
+- **Meet the Team**: Introduces the experts behind Skinvestment, including dermatologists and skincare formulators.
+- **Our Expertise**: Showcases the areas of expertise such as skin type analysis, addressing skin concerns, ingredient expertise, and customized routines.
+- **Contact Information**: Allows users to fill out a form with their contact details and skin information to receive personalized recommendations.
 
-## Deployment
+## Website Link
 
-The website is deployed to a custom domain using [Your Hosting Provider]. Follow these steps to deploy your site:
+You can visit the live website here: [Skinvestment](https://yourskinvestment.netlify.app)
 
-1. Set up a live server or hosting platform for the website deployment.
-2. Register a custom domain name.
-3. Link the custom domain to the deployed website.
-4. Ensure that the website is accessible and functional on the custom domain.
+## Screenshots
 
-## Conclusion
+![Introduction Section](images/visualisation.png)
+![Skincare Analyzer](images/analyzer.png)
+![Meet the Team](images/team.png)
+![Our Expertise](images/expertise.png)
 
-This company profile page for Skinvestment demonstrates the use of semantic HTML and responsive CSS design principles. The page provides a comprehensive overview of the company, its mission, team, and expertise in skincare.
+## Technologies Used
 
-
-
+- HTML
+- CSS
+- JavaScript
