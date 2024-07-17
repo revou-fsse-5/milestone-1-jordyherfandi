@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skinvestment - Your Skincare Partner</title>
+    <title>Skinvestment - Your Skin, Your Investment</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="images/icon.png" type="image/x-icon">
 </head>
@@ -12,12 +12,15 @@
         <div class="container-header">
             <h1>Skinvestment</h1>
             <nav>
-                <ul>
+                <div class="burger" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <ul id="nav-links">
                     <li><a href="#introduction">About Us</a></li>
                     <li><a href="#analyzer">Skincare Analyzer</a></li>
                     <li><a href="#team">Meet the Team</a></li>
-                    <li><a href="#expertise">Our Expertise</a></li>
-                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -27,8 +30,9 @@
             <div class="container">
                 <div class="intro-grid">
                     <div class="intro-text">
-                        <h2 class="intro-text">Unlocking the Secrets of Healthy Skin</h2>
-                        <p class="intro-text">At Skinvestment, we believe that radiant, healthy skin is achieved by understanding each individual's unique needs. Our mission is to empower you with personalized skincare recommendations that nourish and protect your skin.</p>
+                        <h2 class="intro-text">Kulitmu adalah Investasimu!</h2>
+                        <p class="intro-text">Produk viral belum tentu baik untuk tipe kulitmu. Di Skinvestment kami berkomitmen untuk mengedukasi pentingnya mengerti kebutuhan kulitmu dan menemukan bahan aktif terbaik sesuai kondisi kulitmu.</p>
+                        <button class="quiz-button" onclick="openPopup()">Temukan Sekarang</button>
                     </div>
                     <div class="intro-image">
                     
@@ -36,6 +40,125 @@
                 </div>
             </div>
         </section>
+
+        <div class="popup" id="popup">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <section class="form">
+                <form action="" method="get">
+                    <h2>Temukan Produk Skincare sesuai tipe kulitmu</h2>
+                    <div class="grid-form">
+                        <div class="contact">
+                            <fieldset class="contact">
+                                <legend>Informasi Kontak</legend>
+                                <p>Yuk isi data diri agar kami bisa mengirim rekomendasi produk skincare ke No. Whatsapp kamu</p>
+                                <label for="name">Nama:</label>
+                                <input type="text" id="name" name="name" placeholder="Nama Panggilan" required>
+                                
+                                <label for="phone">No. Telp</label>
+                                <div class="phone-group">
+                                    <select id="country-code" name="country-code" required>
+                                        <option value="+62">🇮🇩 ID +62</option>
+                                        <option value="+44">🇬🇧 UK +44</option>
+                                        <option value="+65">🇸🇬 SG +65</option>
+                                    </select>
+                                    <input type="tel" id="phone" name="phone" placeholder="Cth. 08xxxxxxxx" required>
+                                </div>
+                                
+                                <label for="birthday">Tanggal Lahir:</label>
+                                <input type="date" id="birthday" name="birthday">
+                            </fieldset>
+                        </div> 
+                        <div class="skin-type"> 
+                            <fieldset class="skin-type">
+                                <legend>Pilih tipe kulitmu</legend>
+                                <label for="normal">
+                                    <input type="radio" id="normal" name="skin_type" value="normal" required>
+                                    <img src="images/normal_skin.png" alt="Normal Skin">
+                                    Normal - Kulit yang tidak terlalu berminyak atau kering
+                                </label>
+                                
+                                <label for="oily">
+                                    <input type="radio" id="oily" name="skin_type" value="oily" required>
+                                    <img src="images/oily_skin.png" alt="Oily Skin">
+                                    Berminyak - Kulit yang menghasilkan minyak berlebih
+                                </label>
+            
+                                <label for="dry">
+                                    <input type="radio" id="dry" name="skin_type" value="dry" required>
+                                    <img src="images/dry_skin.png" alt="Dry Skin">
+                                    Kering - Kulit yang terasa kencang dan bersisik
+                                </label>
+                                
+                                <label for="combination">
+                                    <input type="radio" id="combination" name="skin_type" value="combination" required>
+                                    <img src="images/combination_skin.png" alt="Combination Skin">
+                                    Kombinasi - Kombinasi antara area kulit berminyak di area T-Zone dan kering di area lainnya
+                                </label>
+                            </fieldset>
+                        </div>
+                        <div class="skin-concerns">
+                            <fieldset class="skin-concerns">
+                                <legend>Apa saja permasalahan kulitmu?</legend>  
+                                <label for="acne">
+                                    <input type="checkbox" id="acne" name="skin_concerns" value="acne">
+                                    <img src="images/acne.png" alt="Acne">
+                                    Jerawat
+                                </label>
+                                
+                                <label for="comedones">
+                                    <input type="checkbox" id="comedones" name="skin_concerns" value="comedones">
+                                    <img src="images/blackheads.png" alt="Comedones">
+                                    Komedo
+                                </label>
+                                
+                                <label for="wrinkles">
+                                    <input type="checkbox" id="wrinkles" name="skin_concerns" value="wrinkles">
+                                    <img src="images/wrinkle.png" alt="Wrinkles">
+                                    Kerutan
+                                </label>
+                                
+                                <label for="dark-spot">
+                                    <input type="checkbox" id="dark-spot" name="skin_concerns" value="dark-spot">
+                                    <img src="images/hyperpigmentation.png" alt="Dark Spot">
+                                    Noda Hitam
+                                </label>
+                                
+                                <label for="melasma">
+                                    <input type="checkbox" id="melasma" name="skin_concerns" value="melasma">
+                                    <img src="images/melasma.png" alt="Melasma">
+                                    Melasma
+                                </label>
+            
+                                <label for="dull">
+                                    <input type="checkbox" id="dull" name="skin_concerns" value="dull">
+                                    <img src="images/dull.png" alt="Melasma">
+                                    Kusam
+                                </label>
+                            </fieldset>
+                        </div>
+                        <div class="medication-info">
+                            <fieldset class="medication-info">
+                                <legend>Pengobatan Dokter</legend>
+                                <p>Apakah Kamu sedang dalam pengobatan Dokter?</p>
+                                <label for="yes">
+                                    <input type="radio" id="yes" name="medication" value="yes" required>
+                                    Iya
+                                </label>
+                                
+                                <label for="no">
+                                    <input type="radio" id="no" name="medication" value="no" required>
+                                    Tidak
+                                </label>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <button type="submit" class="button">Submit</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+        <div class="overlay" id="overlay" onclick="closePopup()"></div>
 
         <section id="analyzer">
             <div class="container">
@@ -141,5 +264,6 @@
             <p>© 2024 Skinvestment. All rights reserved.</p>
         </div>
     </footer>
+    <script src="scripts.js"></script>
 </body>
 </html>

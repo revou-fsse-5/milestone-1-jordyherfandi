@@ -34,6 +34,7 @@ header {
     padding: 0; /* Remove extra padding */
     width: 100%;
     z-index: 1000;
+    position: relative; /* Ensure positioning for burger menu */
 }
 
 header .container-header {
@@ -46,29 +47,61 @@ header .container-header {
 header h1 {
     margin: 0;
     font-size: 2em;
-    color: #ffff;
-    font-size: 2em;
+    color: #fff;
+}
+
+/* Burger Menu Styling */
+.burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px;
+    transition: 0.4s;
+}
+
+.burger.active div:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger.active div:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.active div:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 nav ul {
-    list-style-type: none;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
 }
 
 nav ul li {
-    display: inline-block;
-    margin-right: 20px;
+    margin: 0 10px;
 }
 
 nav ul li a {
+    color: #fff;
     text-decoration: none;
-    color: #ffff;
-    font-weight: 600;
+    font-size: 1em;
     transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
     color: #DBB5B5;
 }
+
+
 
 /* Main Content Styling */
 main {
@@ -120,9 +153,183 @@ section p, section h3 + p {
     color: white; /* Change text color to white */
 }
 
-.intro-text h2{
-    font-size: 3em
+.intro-text h2 {
+    font-size: 3em;
 }
+
+.quiz-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #444;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 10px;
+}
+.quiz-button:hover {background-color: #555}
+.quiz-button:active {
+    background-color: #555;
+    box-shadow: 0 2px #666;
+    transform: translateY(2px);
+}
+.popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* Set the width of the pop-up */
+    max-width: 800px; /* Set the max width of the pop-up */
+    max-height: 80%; /* Set the max height of the pop-up */
+    border-radius: 10px;
+    padding: 20px;
+    background: #fff;
+    z-index: 1000;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 
+                0 6px 6px rgba(0, 0, 0, 0.2), 
+                0 20px 40px rgba(0, 0, 0, 0.1), 
+                0 1px 1px rgba(0, 0, 0, 0.1);
+    overflow: auto; /* Ensure content inside pop-up does not overspill */
+}
+.popup .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.form {
+    background: white;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-bottom: 1em;
+    box-sizing: border-box;
+}
+
+.phone-group {
+    display: flex;
+    align-items: center;
+}
+
+.phone-group select {
+    width: auto;
+    padding: 0.5em;
+    margin-right: 0.5em;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1em;
+    margin-bottom: 1em;
+    height: 100%; /* Ensure all fieldsets take full height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+fieldset legend {
+    font-weight: bold;
+    color: #DBB5B5;
+}
+
+/* Grid Layout for Form */
+.grid-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 2em;
+    align-items: stretch; /* Ensure all items stretch to fill their container */
+}
+
+.grid-form > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Ensure all grid items take full height */
+}
+
+.skin-type label,
+.skin-concerns label,
+.medication-info label {
+    display: flex;
+    align-items: center;
+    font-weight: 500; 
+    margin-bottom: 10px;
+}
+
+.skin-type label img,
+.skin-concerns label img {
+    margin-right: 10px;
+}
+
+.skin-type label input[type="radio"],
+.skin-concerns label input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.skin-concerns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 1em;
+}
+
+.skin-concerns label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    font-weight: normal; 
+}
+
+label img {
+    display: block;
+    margin: 0.5em 0;
+    max-width: 50px;
+    height: auto;
+}
+
+/* Submit Button */
+.button-container {
+    text-align: center; /* Center the button */
+}
+
+.button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 1em 2em; /* Elongate the button */
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+    background-color: #C39898;
+}
+
 
 /* Analyzer Grid */
 .analyzer-grid {
@@ -237,25 +444,92 @@ footer {
 }
 
 footer p {
-    color: #ffff;
+    color: #fff;
     margin: 0;
 }
 
 /* Responsive Design Adjustments */
+@media (max-width: 1024px) {
+
+    header .container-header {
+        flex-direction: row; /* Ensure row direction */
+        justify-content: space-between; /* Space between header text and burger */
+        align-items: center; /* Align items to the center */
+    }
+
+    .intro-grid {
+        grid-template-columns: 1fr; /* Stacks the columns into rows on tablets */
+        text-align: center; /* Center align text for better readability */
+    }
+
+    .intro-text {
+        padding-right: 0; /* Remove right padding on tablets */
+        padding-bottom: 20px; /* Add bottom padding for separation */
+    }
+
+    .analyzer-grid {
+        grid-template-columns: 1fr 1fr; /* Two columns for tablets */
+    }
+
+    .team-grid, .expertise-grid {
+        grid-template-columns: 1fr; /* One column for team and expertise sections */
+        padding: 0; /* Remove additional padding on tablets */
+    }
+
+    .intro-grid {
+        grid-template-columns: 1fr; /* Stacks the columns into rows on tablets */
+        text-align: center; /* Center align text for better readability */
+    }
+
+    .intro-text {
+        padding-right: 0; /* Remove right padding on tablets */
+        padding-bottom: 20px; /* Add bottom padding for separation */
+    }
+
+    .analyzer-grid {
+        grid-template-columns: 1fr 1fr; /* Two columns for tablets */
+    }
+
+    .team-grid, .expertise-grid {
+        grid-template-columns: 1fr; /* One column for team and expertise sections */
+        padding: 0; /* Remove additional padding on tablets */
+    }
+}
+
 @media (max-width: 768px) {
     header .container-header {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row; /* Ensure row direction */
+        justify-content: space-between; /* Space between header text and burger */
+        align-items: center; /* Align items to the center */
     }
 
     nav ul {
-        padding-top: 10px;
+        display: none;
+        flex-direction: column;
+        width: 100%;
         text-align: center;
     }
 
+    nav ul.active {
+        display: flex;
+        position: absolute;
+        top: 60px; /* Adjusted to be below the header */
+        left: 0;
+        background-color: rgba(76, 56, 56, 0.9);
+        width: 100%;
+        z-index: 1;
+    }
+
+    .burger {
+        display: flex;
+    }
+
     nav ul li {
-        display: block;
-        margin: 10px 0;
+        margin: 15px 0;
+    }
+
+    nav ul li a {
+        font-size: 1.2em;
     }
 
     .analyzer-grid, .team-grid, .expertise-grid {
@@ -273,5 +547,42 @@ footer p {
 
     .intro-image img {
         display: none; /* Hide image on small screens */
+    }
+
+
+    .analyzer-grid, .team-grid, .expertise-grid {
+        grid-template-columns: 1fr; /* Stacks the columns into rows on smaller screens */
+    }
+
+    .intro-grid {
+        grid-template-columns: 1fr; /* Stacks the columns into rows on smaller screens */
+    }
+
+    .intro-text {
+        padding-right: 0; /* Remove right padding on small screens */
+        padding-bottom: 20px; /* Add bottom padding for separation */
+    }
+
+    .intro-image img {
+        display: none; /* Hide image on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .popup {
+        width: 90%; /* Adjust the pop-up width on mobile devices */
+        padding: 10px; /* Add padding to the pop-up content */
+    }
+
+    .grid-form {
+        grid-template-columns: 1fr; /* Single column form on mobile devices */
+    }
+
+    .skin-concerns {
+        grid-template-columns: 1fr 1fr; /* Two columns for skin concerns on mobile */
+    }
+
+    fieldset {
+        padding: 10px; /* Adjust padding for fieldsets on mobile */
     }
 }
