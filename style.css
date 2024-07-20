@@ -69,15 +69,15 @@ header h1 {
 }
 
 .burger.active div:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
+    transform: rotate(-45deg) translate(-5px, 10px); /* Edited for perfect X */
 }
 
 .burger.active div:nth-child(2) {
-    opacity: 0;
+    opacity: 0; /* Edited for perfect X */
 }
 
 .burger.active div:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
+    transform: rotate(45deg) translate(-5px, -10px); /* Edited for perfect X */
 }
 
 nav ul {
@@ -119,6 +119,7 @@ section {
 #introduction {
     background-color: rgba(76, 56, 56, 0.7); /* Semi-transparent white background */
     height: 500px; /* Increased height */
+    overflow: hidden;
 }
 
 .intro-grid {
@@ -149,6 +150,7 @@ section p, section h3 + p {
     flex-direction: column;
     justify-content: left;
     text-align: left;
+    line-height: 1.2;
     padding-right: 20px; /* Add padding to the right */
     color: white; /* Change text color to white */
 }
@@ -176,6 +178,30 @@ section p, section h3 + p {
     box-shadow: 0 2px #666;
     transform: translateY(2px);
 }
+
+/* Popup Close Button Styling */
+.popup .close {
+    position: fixed; /* Fix the position */
+    top: 20px; /* Adjust the top position */
+    right: 20px; /* Adjust the right position */
+    width: 30px; /* Set width */
+    height: 30px; /* Set height */
+    background-color: #ff6f61; /* Background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 50%; /* Make it circular */
+    font-size: 20px; /* Font size */
+    cursor: pointer; /* Pointer cursor */
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 1001; /* Ensure it stays on top */
+}
+
+.popup .close:hover {
+    background-color: #C39898; /* Hover background color */
+}
+
 .popup {
     display: none;
     position: fixed;
@@ -194,13 +220,7 @@ section p, section h3 + p {
                 0 20px 40px rgba(0, 0, 0, 0.1), 
                 0 1px 1px rgba(0, 0, 0, 0.1);
     overflow: auto; /* Ensure content inside pop-up does not overspill */
-}
-.popup .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
+    padding-top: 60px; /* Add padding to avoid overlap with close button */
 }
 
 .form {
@@ -334,8 +354,8 @@ label img {
 /* Analyzer Grid */
 .analyzer-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px; /* Increased gap between items */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Always 1 row, with flexible item width */
+    gap: 10px; /* Gap between items */
     text-align: center;
 }
 
@@ -467,10 +487,6 @@ footer p {
         padding-bottom: 20px; /* Add bottom padding for separation */
     }
 
-    .analyzer-grid {
-        grid-template-columns: 1fr 1fr; /* Two columns for tablets */
-    }
-
     .team-grid, .expertise-grid {
         grid-template-columns: 1fr; /* One column for team and expertise sections */
         padding: 0; /* Remove additional padding on tablets */
@@ -487,12 +503,15 @@ footer p {
     }
 
     .analyzer-grid {
-        grid-template-columns: 1fr 1fr; /* Two columns for tablets */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust item width for smaller screens */
     }
 
-    .team-grid, .expertise-grid {
+    .team-grid{
         grid-template-columns: 1fr; /* One column for team and expertise sections */
         padding: 0; /* Remove additional padding on tablets */
+    }
+    .expertise-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for screens 768px or smaller */
     }
 }
 
@@ -532,7 +551,7 @@ footer p {
         font-size: 1.2em;
     }
 
-    .analyzer-grid, .team-grid, .expertise-grid {
+    .team-grid, .expertise-grid {
         grid-template-columns: 1fr; /* Stacks the columns into rows on smaller screens */
     }
 
@@ -549,9 +568,8 @@ footer p {
         display: none; /* Hide image on small screens */
     }
 
-
-    .analyzer-grid, .team-grid, .expertise-grid {
-        grid-template-columns: 1fr; /* Stacks the columns into rows on smaller screens */
+    .expertise-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for screens 768px or smaller */
     }
 
     .intro-grid {
@@ -566,9 +584,7 @@ footer p {
     .intro-image img {
         display: none; /* Hide image on small screens */
     }
-}
 
-@media (max-width: 480px) {
     .popup {
         width: 90%; /* Adjust the pop-up width on mobile devices */
         padding: 10px; /* Add padding to the pop-up content */
@@ -584,5 +600,11 @@ footer p {
 
     fieldset {
         padding: 10px; /* Adjust padding for fieldsets on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .analyzer-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust item width for smallest screens */
     }
 }
