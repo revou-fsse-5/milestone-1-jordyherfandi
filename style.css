@@ -116,7 +116,6 @@ section {
 
 #introduction {
     background-color: rgba(76, 56, 56, 0.7); /* Semi-transparent white background */
-    height: 500px; /* Increased height */
     overflow: hidden;
 }
 
@@ -124,6 +123,11 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr; /* 1 row, 2 columns */
     height: 100%; /* Make grid take full height */
+}
+
+.intro-text p {
+    padding-bottom: 20px;
+    font-size: 1.1em;
 }
 
 #analyzer, #team, #expertise {
@@ -370,16 +374,21 @@ label img {
 .ingredients-grid {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two columns: one for the list, one for the image */
-    gap: 20px;
+    gap: 40px;
     align-items: stretch;
 }
 
 .ingredients-list {
     display: flex;
     flex-direction: column;
-    text-align: left; /* Ensure the list is justified to the left */
     justify-content: space-around; /* Distribute content vertically */;
     text-align: left;
+    
+}
+
+.ingredients-list h3 {
+    margin-bottom: 0px;
+    font-size: 1.3em;
 }
 
 .ingredient-item {
@@ -409,6 +418,9 @@ label img {
 }
 
 .ingredients-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
 }
 
@@ -692,15 +704,24 @@ footer p {
 
 
 @media (max-width: 480px) {
-    .analyzer-grid {
+
+ section {
+        width: 100%;
+        padding: 10px 10px; /* Add padding to create space around sections */
+        margin: 0; /* Remove margin */
+    }   
+
+.analyzer-grid {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust item width for smallest screens */
     
 }
-.container, .container-header {
-    width: 90%;
+.container {
+    width: 100%;
     margin: auto;
     padding: 10px;
 }
+
+#team
 
 #top-ingredients {
     padding: 20px 10px;
