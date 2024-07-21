@@ -101,8 +101,6 @@ nav ul li a:hover {
     color: #DBB5B5;
 }
 
-
-
 /* Main Content Styling */
 main {
     width: 100%;
@@ -137,7 +135,20 @@ section h2, section h3 {
     text-align: center;
     margin: 10px 0; /* Space above and below headings */
     color: #C39898;
-    font-size: 1.5em;
+    font-size: 2em;
+    margin-bottom: 50px;
+}
+
+#top-ingredients h2::after, #analyzer h2::after, #team h2::after, #expertise h2::after {
+    content: "";
+    display: block;
+    width: 70px; /* Width of the horizontal line */
+    height: 5px; /* Height of the horizontal line */
+    background-color: #C39898; /* Color of the horizontal line */
+    margin: 10px auto 0; /* Margin to center the line and add spacing */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 section p, section h3 + p {
@@ -350,23 +361,88 @@ label img {
     background-color: #C39898;
 }
 
+/* Top Ingredients Section Styling */
+#top-ingredients {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+}
+
+.ingredients-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns: one for the list, one for the image */
+    gap: 20px;
+    align-items: stretch;
+}
+
+.ingredients-list {
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Ensure the list is justified to the left */
+    justify-content: space-around; /* Distribute content vertically */;
+    text-align: left;
+}
+
+.ingredient-item {
+    padding: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.ingredient-item h3, .ingredient-item p {
+    justify-content: left;
+    text-align: left;
+}
+
+.ingredient-item.active {
+    background-color: #727272;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.ingredient-item:not(:last-child) {
+    margin-bottom: 10px; /* Add space between items except the last one */
+}
+
+.ingredient-item.active h3 {
+    color: #fff; /* Ensure h3 text turns white when highlighted */
+}
+
+.ingredients-image {
+    position: relative;
+}
+
+.ingredient-image {
+    display: none;
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Add rounded corners to the images */
+}
+
+.ingredient-image.active {
+    display: block;
+}
+
 
 /* Analyzer Grid */
 .analyzer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Always 1 row, with flexible item width */
+    display: flex; /* Use flexbox */
+    flex-wrap: nowrap; /* Prevent wrapping to multiple rows */
+    justify-content: space-between; /* Space out the items evenly */
     gap: 10px; /* Gap between items */
-    text-align: center;
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
 }
 
 .analyzer-item {
-    position: relative;
-    overflow: hidden;
+    flex: 1; /* Allow items to grow and shrink to fit the container */
+    min-width: 200px; /* Minimum width for items */
+    box-sizing: border-box; /* Include padding and border in width */
+    position: relative; /* Position relative for text overlay */
 }
 
 .analyzer-item img {
-    width: 100%;
-    height: auto;
+    width: 100%; /* Ensure images scale to fit the container */
+    height: auto; /* Maintain aspect ratio */
     display: block;
 }
 
@@ -383,7 +459,6 @@ label img {
     justify-content: center;
     align-items: center;
     padding: 10%;
-    
     transition: opacity 0.3s ease;
 }
 
@@ -393,25 +468,35 @@ label img {
 
 /* Team members grid */
 .team-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 40px;
     text-align: center;
     padding: 0 10%; /* More left and right padding */
 }
 
+.team-member {
+    flex: 1; /* Allow team members to grow and shrink */
+    min-width: 100px; /* Minimum width for team members */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
 .team-member .avatar {
-    width: 200px;
-    height: 200px;
+    width: 70%;
+    height: auto;
     border-radius: 50%;
     margin: 0 auto 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Add drop shadow to avatar */
 }
 
 .team-member img {
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
     border-radius: 50%;
+}
+
+.team-member h3 {
+    font-size: 1.3em;
 }
 
 /* Expertise section grid */
@@ -446,9 +531,10 @@ label img {
     padding: 20px; /* Add padding to the content */
 }
 
+
 .expertise-card h3 {
     margin: 20px 0 10px 0; /* Space above and below title */
-    font-size: 1.5em; /* Increase title size */
+    font-size: 1em; /* Increase title size */
     color: #987070;
 }
 
@@ -487,11 +573,6 @@ footer p {
         padding-bottom: 20px; /* Add bottom padding for separation */
     }
 
-    .team-grid, .expertise-grid {
-        grid-template-columns: 1fr; /* One column for team and expertise sections */
-        padding: 0; /* Remove additional padding on tablets */
-    }
-
     .intro-grid {
         grid-template-columns: 1fr; /* Stacks the columns into rows on tablets */
         text-align: center; /* Center align text for better readability */
@@ -506,10 +587,6 @@ footer p {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust item width for smaller screens */
     }
 
-    .team-grid{
-        grid-template-columns: 1fr; /* One column for team and expertise sections */
-        padding: 0; /* Remove additional padding on tablets */
-    }
     .expertise-grid {
         grid-template-columns: repeat(2, 1fr); /* 2 columns for screens 768px or smaller */
     }
@@ -594,6 +671,17 @@ footer p {
         grid-template-columns: 1fr; /* Single column form on mobile devices */
     }
 
+    .ingredients-grid {
+        grid-template-columns: 1fr; /* Single column layout on smaller screens */
+        text-align: center;
+    }
+
+    .ingredients-image {
+        order: -1; /* Show image before the list on smaller screens */
+        margin-bottom: 20px;
+    }
+}
+
     .skin-concerns {
         grid-template-columns: 1fr 1fr; /* Two columns for skin concerns on mobile */
     }
@@ -601,7 +689,7 @@ footer p {
     fieldset {
         padding: 10px; /* Adjust padding for fieldsets on mobile */
     }
-}
+
 
 @media (max-width: 480px) {
     .analyzer-grid {
